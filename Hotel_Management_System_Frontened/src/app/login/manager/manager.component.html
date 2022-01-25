@@ -1,0 +1,75 @@
+<section class="header">
+  <nav class="navbar">
+    <div class="container-fluid">
+      <img src="../assets/Image/hotel2.webp" alt="Hotel" width="100" height="100" style="border-radius: 50%;">
+      <h1 class="display-5 fw-bold" style="text-align: center; padding-left: 10%;">ROOM DETAILS</h1>
+      <div>
+        <button (click)="clickAddResto()" type="button" class="hero-btn" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Add Room</button>
+        <button routerLink="/rate" class="hero-btn">Set Rates</button>
+        <button routerLink="/login" class="hero-btn">Log out</button>
+      </div>
+    </div>
+  </nav>
+  <div class="spaces">
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th scope="col">Room No</th>
+          <th scope="col">Type</th>
+          <!-- <th scope="col">Room Image</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rooms">
+          <td>{{data.room_no}}</td>
+          <td>{{data.type}}</td>
+
+          <!-- <td>{{data.room_image}}</td> -->
+
+          <td>
+            <button (click)="editRoom(data)" type="button" class="btn btn-success" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Edit</button>&nbsp;
+            <button (click)="deleteRoom(data)" class="btn btn-info">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">HMS Records Form</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="formValue">
+              <div class="mb-3">
+                <label class="form-label">Type</label>
+                <input type="text" formControlName="type" class="form-control" placeholder="Room type"
+                  id="exampleInputPassword1" [ngClass]="{ 'is-invalid': submitted && f['type'].errors }">
+
+                  <div *ngIf="submitted && f['type'].errors" class="invalid-feedback">
+                    <div *ngIf="f['type'].errors['required']">Type is required</div>
+
+                  </div>
+              </div>
+              <!-- <div class="mb-3">
+                <label class="form-label">Room image</label>
+                <input type="text" formControlName="room_image" class="form-control" placeholder="image"
+                  id="exampleInputPassword1">
+              </div> -->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="clear" class="btn btn-warning" (click)="clearForm()">clear</button>
+            <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="addRoom()">Add Details</button>
+            <button *ngIf="showbtn" type="button" class="btn btn-primary" (click)="updateRoom()">Update Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

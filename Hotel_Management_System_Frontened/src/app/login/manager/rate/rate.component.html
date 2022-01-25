@@ -1,0 +1,95 @@
+<section class="header">
+  <nav class="navbar">
+    <div class="container-fluid">
+      <img src="../assets/Image/hotel2.webp" alt="Hotel" width="100" height="100" style="border-radius: 50%;">
+      <h1 class="display-5 fw-bold" style="text-align: center; padding-left: 10%;">ROOM RATES</h1>
+     <div class="d-flex">
+      <button routerLink="/manager" class="hero-btn">BACK</button>
+      <button (click)="clickAddResto()" type="button" class="hero-btn" data-bs-toggle="modal"
+       data-bs-target="#exampleModal">Set Rates</button>
+      <button routerLink="/login" class="hero-btn">Log out</button>
+     </div>
+    </div>
+   </nav>
+
+   <div class="spaces">
+   <table class="table mt-4">
+    <thead>
+     <tr>
+        <th scope="col"> Room Type</th>
+        <th scope="col">No_of_day</th>
+        <th scope="col">No_of_guests</th>
+        <th scope="col">First Night price(in rs)</th>
+        <th scope="col">Extension Price(in rs)</th>
+        <th scope="col">Tax(in rs)</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let data of rates">
+        <td>{{data.type}}</td>
+        <td>{{data.no_of_day}}</td>
+        <td>{{data.no_of_guests}}</td>
+        <td>{{data.first_night_price}}</td>
+        <td>{{data.extension_price}}</td>
+        <td>{{data.taxes}}</td>
+      <td>
+       <button (click)="editRate(data)" type="button" class="btn btn-success" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">Edit</button>&nbsp;
+       <button (click)="deleteRate(data)" class="btn btn-info">Delete</button>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+
+   <!-- Modal -->
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+     <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLabel">Room Rate details </h5>
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form [formGroup]="rateForm">
+        <div class="mb-3">
+         <label class="form-label">Room Type</label>
+         <input  *ngIf="showAdd" type="text" formControlName="type" class="form-control" placeholder="Room Type" id="exampleInputEmail1">
+         <input *ngIf="showbtn" type="text" formControlName="type" class="form-control" placeholder="Room Type" id="exampleInputEmail1" readonly>
+        </div>
+        <div class="mb-3">
+         <label class="form-label">No_of_Days</label>
+         <input type="text" formControlName="no_of_day" class="form-control" placeholder="No. of Days"
+          id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+         <label class="form-label">No_of_Guests</label>
+         <input type="text" formControlName="no_of_guests" class="form-control" placeholder="No_of_Guests"
+          id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">First Night Price</label>
+            <input type="text" formControlName="first_night_price" class="form-control" placeholder="First Night Price"
+             id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Extension Price</label>
+            <input type="text" formControlName="extension_price" class="form-control" placeholder="Extension Price"
+             id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Taxes</label>
+            <input type="text" formControlName="taxes" class="form-control" placeholder="taxes"
+             id="exampleInputPassword1">
+           </div>
+       </form>
+      </div>
+      <div class="modal-footer">
+       <button type="button" id="clear" class="btn btn-warning"  (click)="clearForm()">clear</button>
+       <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="addRate()">Add Details</button>
+       <button *ngIf="showbtn" type="button" class="btn btn-primary" (click)="updateRate()">Update Details</button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+</section>

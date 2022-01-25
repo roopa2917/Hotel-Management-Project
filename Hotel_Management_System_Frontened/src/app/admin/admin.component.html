@@ -1,0 +1,73 @@
+<section class="header">
+  <nav class="navbar">
+    <img src="../assets/Image/hotel2.webp" alt="Hotel" width="100" height="100" style="border-radius: 50%;">
+    <h2>HMS User Details</h2>
+    <div class="d-flex">
+       <button (click)="clickAddResto()" type="button" class="hero-btn" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">Add User</button> 
+      <button routerLink="/adminlogin" class="hero-btn">Log out</button>
+    </div>
+
+</nav>
+<!--Table Shown Here-->
+<div class="spaces">
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+      <th scope="col">Designation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of users">
+      <td>{{data.email}}</td>
+      <td>{{data.password}}</td>
+      <td>{{data.designation}}</td>
+      <td>
+        <button (click)="editUser(data)" type="button" class="btn btn-success" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Edit</button>&nbsp;
+        <button (click)="deleteUser(data)" class="btn btn-info">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">User details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="text" formControlName="email" class="form-control" placeholder="email"
+              id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text"></div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="text" formControlName="password" class="form-control" placeholder="password"
+              id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">designation</label>
+            <input type="text" formControlName="designation" class="form-control" placeholder="designation"
+              id="exampleInputPassword1">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="clear" class="btn btn-warning" (click)="clearForm()">clear</button>
+        <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="addUser()">Add Details</button>
+        <button *ngIf="showbtn" type="button" class="btn btn-primary" (click)="updateUser()">Update Details</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>

@@ -1,0 +1,31 @@
+<section class="header">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <img src="../assets/Image/hotel2.webp" alt="Hotel" width="100" height="100" style="border-radius: 50%;">
+        <h1 class="display-5 fw-bold" style="text-align: center; padding-left: 10%;">ROOM DETAILS</h1>
+        <div>
+          <button routerLink="/searchroom" class="hero-btn">Back</button>
+        </div>
+      </div>
+    </nav>
+    <div class="spaces">
+      <table class="table mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Room No</th>
+            <th scope="col">Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of rooms">
+            <td>{{data.room_no}}</td>
+            <td>{{data.type}}</td>
+            <td>
+              <button (click)="bookRoom(data.room_no)" type="button" class="btn btn-success" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Book</button>&nbsp;
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>

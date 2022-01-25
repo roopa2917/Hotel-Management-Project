@@ -1,0 +1,36 @@
+<section class="h-100 gradient-form">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+
+          <div class="text-center">
+            <img src="../../assets/Image/hotel2.webp"
+              style="width: 150px;height: 150px; border-radius: 50%;margin-top: 2%;" alt="logo">
+            <h4 class="mt-1 mb-5 pb-1">ADMINISTRATOR</h4>
+          </div>
+
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb">
+              <label for="exampleInputEmail1" class="form-label" style="font-weight: bolder;">ADMIN EMAIL</label>
+              <input formControlName="email" placeholder="Email" type="email" class="form-control"
+                id="exampleInputEmail1" aria-describedby="emailHelp">
+
+            </div>
+            <div class="mb">
+              <label for="exampleInputPassword1" class="form-label" style="font-weight: bolder;">ADMIN PASSWORD</label>
+              <input formControlName="password" placeholder="Password" type="password" class="form-control"
+                id="exampleInputPassword1">
+            </div>
+
+
+            <button type="submit" class="btn btn-primary mc" style="font-weight: bolder;">LOGIN</button><br><br>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

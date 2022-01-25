@@ -1,0 +1,37 @@
+<section class="header">
+
+  <div>
+    <div class="bg-text">
+      <div class="text-center">
+        <h1>Search Room</h1>
+      </div><br>
+      <div>
+        
+        <form [formGroup]="searchForm" (ngSubmit)="findRoom()">
+          <div>
+            <label for="check-in" class="form-label">Check-In : </label>
+            <input formControlName="check_in" type="date" id="check_in" name="check_in" placeholder="Check-In"
+              class="form-control">&nbsp;&nbsp;
+
+            <label for="check-out" class="form-label">Check-Out : </label>
+            <input formControlName="check_out" type="date" id="check_out" name="check_out" class="form-control" placeholder="Check-Out">
+          </div><br>
+          <div class="mb-3">
+            <label for="no_of_adults" class="form-label">Number of Adults</label>
+            <input formControlName="no_of_adults" placeholder="Enter Number of Adults" id="no_of_adults"
+              name="no_of_adults" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="no_of_child" class="form-label">Number of Childrens</label>
+            <input formControlName="no_of_child" placeholder="Enter Number of Childrens" id="no_of_child"
+              name="no_of_child" class="form-control">
+          </div>
+
+          <button type="submit"  class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">Search</button><br><br>
+          <a routerLink="/restaurant" style="text-decoration: none; color: orangered;">Back</a>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>

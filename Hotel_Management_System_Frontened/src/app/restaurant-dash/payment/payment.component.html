@@ -1,0 +1,41 @@
+<section class="header">
+
+  <div>
+    <div class="bg-text">
+      <div class="text-center">
+        <h1>Payment</h1>
+      </div><br>
+      <div>
+
+        <form [formGroup]="paymentForm">
+
+          <div class="mb-3">
+            <label class="form-label">Pay Time</label>
+            <input type="text" formControlName="pay_time" class="form-control" id="exampleInputPayTime1" readonly>
+          </div>
+
+
+          <div class="mb-3">
+            <label class="form-label">Bill Id</label>
+            <input type="text" formControlName="bill_id" class="form-control" id="exampleInputBillId1" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Credit Details</label>
+            <input type="text" formControlName="credit_details" class="form-control" id="exampleInputCreditDetails1">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Total Price</label>
+            <input type="text" formControlName="total" class="form-control" id="exampleInputTotal1" readonly>
+          </div>
+
+        </form>
+        <button *ngIf="get" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+          (click)="getPaymentDetails()">Get Payment Details</button>
+        <button *ngIf="pay" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+          (click)="Payment()">Pay</button>
+      </div>
+    </div>
+  </div>
+</section>

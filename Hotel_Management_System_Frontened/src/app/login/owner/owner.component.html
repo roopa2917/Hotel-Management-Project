@@ -1,0 +1,141 @@
+<section class="header">
+  <nav class="navbar">
+    <div class="container-fluid">
+      <img src="../assets/Image/hotel2.webp" alt="Hotel" width="100" height="100" style="border-radius: 50%;">
+      <h1 class="display-5 fw-bold" style="text-align: center; padding-left: 10%;">EMPLOYEE DETAILS</h1>
+      <div>
+        <button (click)="clickAddResto()" type="button" class="hero-btn" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Add Employee</button>
+
+        <button routerLink="/report" class="hero-btn">View Report</button>
+        <button routerLink="/login" class="hero-btn">Log out</button>
+      </div>
+    </div>
+  </nav>
+
+  <!--Table Shown Here-->
+  <div class="spaces">
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th scope="col"> Id</th>
+          <th scope="col"> Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Age</th>
+          <!-- <th scope="col">Nic</th> -->
+          <th scope="col">Salary</th>
+          <th scope="col">Occupation</th>
+          <th scope="col">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let data of employees">
+          <td>{{data.stm_id}}</td>
+          <td>{{data.emp_Name}}</td>
+          <td>{{data.email}}</td>
+          <td>{{data.age}}</td>
+          <!-- <td>{{data.nic}}</td> -->
+          <td>{{data.emp_Sal}}</td>
+          <td>{{data.occupation}}</td>
+          <td>{{data.emp_Address}}</td>
+
+          <td>
+            <button (click)="editEmp(data)" type="button" class="btn btn-success" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Edit</button>&nbsp;
+            <button (click)="deleteEmp(data)" class="btn btn-info">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">HMS Records Form</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="formValue">
+              <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" formControlName="emp_Name" class="form-control" placeholder=" Name Here"
+                  id="exampleInputEmail1" aria-describedby="emailHelp"
+                  [ngClass]="{ 'is-invalid': submitted && f['emp_Name'].errors }">
+                <div *ngIf="submitted && f['emp_Name'].errors" class="invalid-feedback">
+                  <div *ngIf="f['emp_Name'].errors['required']">Name is required</div>
+                  <div id="emailHelp" class="form-text"></div>
+                </div>
+              </div>
+                <div class="mb-3">
+                  <label class="form-label">Email Id</label>
+                  <input type="text" formControlName="email" class="form-control" placeholder=" email Id"
+                    id="exampleInputPassword1" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                  <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                    <div *ngIf="f['email'].errors['required']">Email is required</div>
+                    <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Age</label>
+                  <input type="text" formControlName="age" class="form-control" placeholder="age"
+                    id="exampleInputPassword1" [ngClass]="{ 'is-invalid': submitted && f['age'].errors }">
+                  <div *ngIf="submitted && f['age'].errors" class="invalid-feedback">
+                    <div *ngIf="f['age'].errors['required']">Age is required</div>
+
+                  </div>
+                </div>
+                <!-- <div class="mb-3">
+                  <label class="form-label">Nic</label>
+                  <input type="text" formControlName="nic" class="form-control" placeholder="nic"
+                    id="exampleInputPassword1" [ngClass]="{ 'is-invalid': submitted && f['nic'].errors }">
+                  <div *ngIf="submitted && f['nic'].errors" class="invalid-feedback">
+                    <div *ngIf="f['nic'].errors['required']">Please fill nic</div>
+
+                  </div>
+                </div> -->
+                <div class="mb-3">
+                  <label class="form-label">Salary</label>
+                  <input type="text" formControlName="emp_Sal" class="form-control" placeholder="salary"
+                    id="exampleInputPassword1" [ngClass]="{ 'is-invalid': submitted && f['emp_Sal'].errors }">
+                  <div *ngIf="submitted && f['emp_Sal'].errors" class="invalid-feedback">
+                    <div *ngIf="f['emp_Sal'].errors['required']">Please fillup Salary</div>
+
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Occupation</label>
+                  <input type="text" formControlName="occupation" class="form-control" placeholder="occupation"
+                    id="exampleInputPassword1" [ngClass]="{ 'is-invalid': submitted && f['occupation'].errors }">
+                  <div *ngIf="submitted && f['occupation'].errors" class="invalid-feedback">
+                    <div *ngIf="f['occupation'].errors['required']">Please fillup occupation</div>
+
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Address</label>
+                  <input type="text" formControlName="emp_Address" class="form-control" placeholder="address "
+                    id="exampleInputPassword1" [ngClass]="{ 'is-invalid': submitted && f['emp_Address'].errors }">
+                  <div *ngIf="submitted && f['emp_Address'].errors" class="invalid-feedback">
+                    <div *ngIf="f['emp_Address'].errors['required']">Please fillup Address</div>
+
+                  </div>
+                </div>
+                <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="clear" class="btn btn-warning" (click)="clearForm()">clear</button>
+            <!---- <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="addResto()">Add Details</button>-->
+            <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="addEmp()">Add Details</button>
+
+            <!--<button *ngIf="showbtn" type="button" class="btn btn-primary" (click)="updateResto()">Update Details</button>-->
+            <button *ngIf="showbtn" type="button" class="btn btn-primary" (click)="updateEmp()">Update Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

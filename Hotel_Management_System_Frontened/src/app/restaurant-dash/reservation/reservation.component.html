@@ -1,0 +1,55 @@
+<section class="header">
+  <nav class="navbar">
+    <div class="container-fluid">
+      <img src="../../../assets/Image/hotel2.webp" alt="Hotel" width="100" height="100" style="border-radius: 50%;">
+      <h1 class="display-5 fw-bold" style="text-align: center; padding-left: 4%;">RESERVATION RECORD</h1>
+      <div>
+        <button routerLink="/restaurant" class="hero-btn">BACK</button>
+        <button routerLink="/login" class="hero-btn">Log out</button>
+
+      </div>
+    </div>
+  </nav>
+<div class="spaces">
+<!--Table Shown Here-->
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th scope="col"> Res_Id</th>
+            <th scope="col"> Guest_Id</th>
+            <th scope="col">No of Children</th>
+            <th scope="col">No of Adults</th>
+            <th scope="col">Check-in</th>
+            <th scope="col">Check-out</th>
+            <th scope="col">No of nights</th>
+            <th scope="col">Room_no</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+
+
+
+    <tbody>
+        <tr *ngFor="let data of res">
+            <td>{{data.res_id}}</td>
+            <td>{{data.gu_id}}</td>
+            <td>{{data.no_of_child}}</td>
+            <td>{{data.no_of_adults}}</td>
+            <td>{{data.check_in_date}}</td>
+            <td>{{data.check_out_date}}</td>
+            <td>{{data.number_of_nights}}</td>
+            <td>{{data.room_no}}</td>
+            <td>{{data.status}}</td>
+
+
+
+
+           <td>
+              <button (click)="bill(data.res_id)"  type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Issue Bill</button>&nbsp;
+              <button (click)="cancel(data.res_id)" class="btn btn-info">Cancel</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</section>

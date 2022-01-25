@@ -1,0 +1,58 @@
+<section class="header">
+
+  <div>
+    <div class="bg-text">
+      <div class="text-center">
+        <h1>Bill</h1>
+      </div><br>
+      <div>
+
+        <form [formGroup]="billForm">
+
+          <div class="mb-3">
+            <label class="form-label">Bill Id</label>
+            <input type="text" formControlName="bill_id" class="form-control" placeholder="bill id"
+              id="exampleInputBillId1" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Guest Id</label>
+            <input type="text" formControlName="gu_id" class="form-control" placeholder="Guest Id"
+              id="exampleInputNoofGuestId1" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">No of Guests</label>
+            <input type="text" formControlName="no_of_guest" class="form-control" placeholder="No of Guests"
+              id="exampleInputNoofGuests1" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Price</label>
+            <input type="text" formControlName="price" class="form-control" placeholder="Price" id="exampleInputPrice"
+              readonly>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Taxes</label>
+            <input type="text" formControlName="taxes" class="form-control" placeholder="Taxes" id="exampleInputTaxes1"
+              readonly>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Date</label>
+            <input type="text" formControlName="date" class="form-control" placeholder="Date" id="exampleInputDate1"
+              readonly>
+          </div>
+
+
+        </form>
+        <button *ngIf="generate" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+          (click)="GenerateBill()">Generate Bill</button>
+        <button *ngIf="proceed" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+          (click)="Proceed()">Proceed</button>
+
+      </div>
+    </div>
+  </div>
+</section>
